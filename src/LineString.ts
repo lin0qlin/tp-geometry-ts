@@ -12,12 +12,15 @@ export default class LineString implements Geometry{
     return "LineString";
   }
 
+  isEmpty(): boolean {
+    return this.points.length === 0;
+}
+
   getNumPoints(): number {
-    return this.points?this.points.length:0;
+    return this.points.length;
   }
 
-  getPointN(n:number): Point {
+  getPointN(n: number): Point | undefined {
     return this.points[n];
   }
-
 }
