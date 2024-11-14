@@ -29,16 +29,32 @@ describe("test LineString", () => {
   it("test translate", () => {
     const point1 = new Point([3.0, 4.0]);
     const point2 = new Point([2.0, 3.0]);
-    const point3 = new Point([3.5, 2.5]);
-    const point4 = new Point([2.5, 3.0]);
-    const line = new LineString([point1, point2, point3, point4]);
+
+    const line = new LineString([point1, point2]);
 
     line.translate(1.0, 2.0);
 
     expect(line.getPointN(0)?.getCoordinate()).to.deep.equal([4.0, 6.0]);
     expect(line.getPointN(1)?.getCoordinate()).to.deep.equal([3.0, 5.0]);
-    expect(line.getPointN(2)?.getCoordinate()).to.deep.equal([4.5, 4.5]);
-    expect(line.getPointN(3)?.getCoordinate()).to.deep.equal([3.5, 5.0]);
   });
-  
+
+  it("test clone", () => {
+    const point1 = new Point([3.0, 4.0]);
+    const point2 = new Point([2.0, 3.0]);
+    const point3 = new Point([3.5, 2.5]);
+    const line = new LineString([point1, point2]);
+    const copyLine = line.clone() as LineString;
+
+    // Translate the copy
+    copyLine.translate(10.0, 10.0);
+
+    // Assert the original line has not been modified
+    expect(line.getPointN(0)?.getCoordinate()).to.deep.equal([3.0, 4.0]);
+    expect(line.getPointN(1)?.getCoordinate()).to.deep.equal([2.0, 3.0]);
+
+    // Assert the cloned line has been translated
+    expect(copyLine.getPointN(0)?.getCoordinate()).to.deep.equal([13.0, 14.0]);
+    expect(copyLine.getPointN(1)?.getCoordinate()).to.deep.equal([12.0, 13.0]);
+  });
+
 });

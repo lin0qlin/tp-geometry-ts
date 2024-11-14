@@ -24,4 +24,18 @@ describe("test Point", () => {
         p.translate(1.0, 2.0);
         expect(p.getCoordinate()).to.deep.equal([4.0, 6.0]);
       });
+
+    it("test clone", () => {
+        const p = new Point([3.0, 4.0]);
+        const copyPoint = p.clone() as Point;
+
+        // Translate the copy
+        copyPoint.translate(10.0, 10.0);
+
+        // Assert the original point has not been modified
+        expect(p.getCoordinate()).to.deep.equal([3.0, 4.0]);
+
+        // Assert the cloned point has been translated
+        expect(copyPoint.getCoordinate()).to.deep.equal([13.0, 14.0]);
+    });
 });
