@@ -41,7 +41,6 @@ describe("test LineString", () => {
   it("test clone", () => {
     const point1 = new Point([3.0, 4.0]);
     const point2 = new Point([2.0, 3.0]);
-    const point3 = new Point([3.5, 2.5]);
     const line = new LineString([point1, point2]);
     const copyLine = line.clone() as LineString;
 
