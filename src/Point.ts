@@ -5,6 +5,9 @@ import Geometry from "./Geometry";
 import GeometryVisitor from "./GeometryVisitor";
 
 export default class Point implements Geometry{
+  LogGeometryVisitor() {
+      throw new Error("Method not implemented.");
+  }
   private coordinate?: Coordinate;
 
   constructor(coordinate?: Coordinate) {
