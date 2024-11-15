@@ -1,11 +1,31 @@
 import Envelope from "./Envelope";
 import Coordinate from "./Coordinate";
+import Point from "./Point";
+import LineString from "./LineString";
 
 export default class EnvelopeBuilder {
   private Xmin: number = Infinity;
   private Ymin: number = Infinity;
   private Xmax: number = -Infinity;
   private Ymax: number = -Infinity;
+
+  visitPoint(point: Point): void {
+    if (!point.isEmpty()) {
+      this.insert(point.getCoordinate());
+    }
+  }
+
+  visitLineString(lineString: LineString): void {
+    if (!lineString.isEmpty()) {
+      for (let i = 0; i < lineString.getNumPoints(); i++) {
+        const point = lineString.getPointN(i);
+        if (point && !point.isEmpty()) {
+          this.insert(point.getCoordinate());
+        }
+      }
+    }
+  }
+
 
   insert(coordinate: Coordinate): void {
     if (coordinate.length === 2) {
