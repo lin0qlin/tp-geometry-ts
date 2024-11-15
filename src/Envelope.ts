@@ -1,5 +1,4 @@
 import Coordinate from "./Coordinate";
-// import Geometry from "./Geometry";
 
 export default class Envelope {
   private bottomLeft: Coordinate;
