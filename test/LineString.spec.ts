@@ -56,4 +56,12 @@ describe("test LineString", () => {
     expect(copyLine.getPointN(1)?.getCoordinate()).to.deep.equal([12.0, 13.0]);
   });
 
+  it("test getEnvelope", () => {
+    const point1 = new Point([3.0, 4.0]);
+    const point2 = new Point([2.0, 3.0]);
+    const line = new LineString([point1, point2]);
+    const envelope = line.getEnvelope();
+    expect(envelope.toString()).to.equal("Envelope [bottomLeft: (2, 3), topRight: (3, 4)]");
+});
+
 });

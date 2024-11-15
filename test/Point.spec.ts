@@ -38,4 +38,15 @@ describe("test Point", () => {
         // Assert the cloned point has been translated
         expect(copyPoint.getCoordinate()).to.deep.equal([13.0, 14.0]);
     });
+
+    it("test envelope", () => {
+        const p = new Point([3.0,4.0]);
+        const e = p.getEnvelope();
+        expect(e.getXmax()).to.equal(3.0);
+        expect(e.getXmax()).to.equal(3.0);
+        expect(e.getYmin()).to.equal(4.0);
+        expect(e.getYmax()).to.equal(4.0);
+
+        expect(e.toString()).to.equal("Envelope [bottomLeft: (3, 4), topRight: (3, 4)]");
+    });
 });
