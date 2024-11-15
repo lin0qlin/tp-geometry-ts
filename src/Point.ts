@@ -1,16 +1,18 @@
+import AbstractGeometry from "./AbstractGeometry";
 import Coordinate from "./Coordinate";
 import Envelope from "./Envelope";
 import EnvelopeBuilder from "./EnvelopeBuilder";
-import Geometry from "./Geometry";
+// import Geometry from "./Geometry";
 import GeometryVisitor from "./GeometryVisitor";
 
-export default class Point implements Geometry{
+export default class Point extends AbstractGeometry{
   LogGeometryVisitor() {
       throw new Error("Method not implemented.");
   }
   private coordinate?: Coordinate;
 
   constructor(coordinate?: Coordinate) {
+    super();
     this.coordinate = coordinate ? coordinate:[];
   }
 

@@ -7,6 +7,6 @@ export default interface Geometry {
     translate(dx:number,dy:number):void;
     clone(): Geometry
     getEnvelope():Envelope
-    // GeometryVisitor(): Geometry
+    asText(): string;
     accept(visitor: GeometryVisitor): void;
 }
